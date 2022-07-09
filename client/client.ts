@@ -1,6 +1,6 @@
 const Delay = (time: number) =>
   new Promise((resolve) => setTimeout(resolve, time));
-const peds: number[] = [];
+let peds: number[] = [];
 let deadCount: number = 0;
 let warFlag: boolean = true;
 
@@ -37,6 +37,8 @@ RegisterCommand(
             SetPedCanSwitchWeapon(PlayerPedId(), true);
             removeCurrentGun();
             clearInterval(checkIfKilledNpcInterval);
+            peds = [];
+            deadCount = 0;
             warFlag = true;
             console.log("war is over");
             return;
